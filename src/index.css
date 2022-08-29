@@ -1,13 +1,261 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+		"Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+		"Helvetica Neue", sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	height: 100vh;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+		monospace;
+}
+
+/***** NAVBAR *****/
+/* NAVBAR DEFAULT MODE */
+.navbar {
+	height: 10vh;
+}
+.navbar > div {
+	width: fit-content;
+	margin-left: 85%;
+	display: flex;
+	/* justify-content: flex-end; */
+	align-items: center;
+	cursor: pointer;
+}
+.toggle--slider {
+	width: 30px;
+	height: 15px;
+	margin: 0 5px;
+	border: 1px solid black;
+	border-radius: 2rem;
+	background-color: black;
+	display: flex;
+	justify-content: flex-start;
+}
+.toggle--slider--circle {
+	width: 15px;
+	height: 15px;
+	border-radius: 50%;
+	background-color: white;
+}
+/* NAVBAR DARK MODE */
+nav.dark {
+	background-color: black;
+}
+nav.dark > div {
+	color: white;
+}
+nav.dark .toggle--slider {
+	width: 30px;
+	height: 15px;
+	margin: 0 5px;
+	border: 1px solid white;
+	border-radius: 2rem;
+	background-color: white;
+	cursor: pointer;
+	display: flex;
+	justify-content: flex-end;
+}
+nav.dark .toggle--slider--circle {
+	width: 15px;
+	height: 15px;
+	border-radius: 50%;
+	background-color: black;
+}
+
+/***** START PAGE *****/
+/* DEFAULT */
+.start {
+	height: 90vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+.start--main {
+	margin-bottom: 30vh;
+}
+.start--main h1 {
+	margin: 0 0 25px 0;
+}
+.start--main button {
+	width: 40px;
+	height: 40px;
+	font-size: 30px;
+	background-color: black;
+	color: white;
+	border-radius: 5px;
+	cursor: pointer;
+	box-shadow: 0 2px #999;
+}
+.start--main button:active {
+	background-color: black;
+	box-shadow: 0 1px #666;
+	transform: translateY(2px);
+}
+/*DARK MODE */
+.start--page--dark {
+	background-color: black;
+}
+.start--page--dark h3,
+.start--page--dark h1 {
+	color: white;
+}
+.start--page--dark button {
+	border: 1px solid white;
+	background-color: white;
+	color: black;
+}
+.start--page--dark button:active {
+	background-color: white;
+	box-shadow: 0 1px #666;
+	transform: translateY(2px);
+}
+
+/****** NOTES ******/
+.notes {
+	display: flex;
+	justify-content: center;
+}
+.notes--sidebar {
+	width: 25%;
+	height: 75vh;
+	text-align: center;
+	overflow: scroll;
+	border: 1px solid black;
+}
+.notes--sidebar--top {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 10px;
+	border-bottom: 1px solid grey;
+	box-shadow: 0 0 7px grey;
+}
+.notes--sidebar--top div {
+	margin-right: 10px;
+	font-size: 20px;
+}
+.add--note--button {
+	width: 35px;
+	height: 35px;
+	font-size: 25px;
+	background-color: black;
+	color: white;
+	border-radius: 5px;
+	cursor: pointer;
+	box-shadow: 0 2px #999;
+}
+.add--note--button:active {
+	box-shadow: 0 1px #666;
+	transform: translateY(2px);
+}
+.list--item {
+	cursor: pointer;
+}
+.list--item:hover {
+	background-color: rgb(216, 215, 215);
+}
+.list--item:active {
+	transform: scale(0.99);
+}
+.list--item--main {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.list--item--main p {
+	margin: 15px 10px;
+	width: 105px;
+	font-size: 15px;
+	text-align: left;
+	overflow: hidden;
+}
+.list--item--main--selected {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: rgb(197, 197, 197);
+}
+.list--item--main--selected p {
+	margin: 15px 10px;
+	width: 110px;
+	font-size: 15px;
+	text-align: left;
+	overflow: hidden;
+}
+.delete--icon {
+	width: 30px;
+	height: 30px;
+	margin: 15px 10px;
+	font-size: 15px;
+	padding: 0;
+	border-radius: 5px;
+	background-color: darkred;
+	color: grey;
+	cursor: pointer;
+}
+.delete--icon:hover {
+	color: white;
+	background-color: red;
+}
+hr {
+	margin: 0;
+}
+.notes--editor {
+	width: 35%;
+	height: 75vh;
+}
+.notes--editor input {
+	width: 100%;
+	height: 100%;
+	padding-left: 10px;
+	font-size: 20px;
+}
+.notes--dark {
+	height: 90vh;
+	background-color: black;
+	color: white;
+}
+.notes--dark .notes--sidebar {
+	border: 1px solid white;
+}
+.notes--dark .add--note--button {
+	background-color: white;
+	color: black;
+}
+.notes--dark input {
+	background-color: black;
+	color: white;
+}
+.notes--dark .list--item:hover {
+	background-color: rgb(66, 66, 66);
+}
+.placeholder {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #c5c5c5;
+}
+::-webkit-scrollbar {
+	width: 12px;
+	height: 0;
+}
+::-webkit-scrollbar-track {
+	background: #e7e9eb;
+	border: 1px solid white;
+	border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #3f3d3d;
+	border-radius: 5px;
 }
