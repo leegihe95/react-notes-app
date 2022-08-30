@@ -29,9 +29,12 @@ function App() {
 	function timeManagement() {
 		let d = new Date();
 
-		return `${d.getFullYear().toString().substring(2)}/${
+		return `${
 			d.getMonth() + 1 < 10 ? "0" + (d.getMonth() + 1) : d.getMonth() + 1
-		}/${d.getDate() < 10 ? "0" + d.getDate() : d.getDate()} ${
+		}/${d.getDate() < 10 ? "0" + d.getDate() : d.getDate()}/${d
+			.getFullYear()
+			.toString()
+			.substring(2)} ${
 			d.getHours() < 10 ? "0" + d.getHours() : d.getHours()
 		}:${d.getMinutes() < 10 ? "0" + d.getMinutes() : d.getMinutes()}`;
 	}

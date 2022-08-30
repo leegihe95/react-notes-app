@@ -12,10 +12,8 @@ export default function Notes(props) {
 						: "list--item--main"
 				}
 			>
-				<p>
-					<i>{item.date}</i>
-				</p>
-				<p>{item.text.slice(0, 15)}</p>
+				<p className="date--text">{item.date}</p>
+				<p className="value--text">{item.text}</p>
 				<button
 					onClick={(event) => props.deleteNote(event, item.id)}
 					className="delete--icon"
@@ -32,11 +30,14 @@ export default function Notes(props) {
 	);
 
 	const inputShow = displaySelected ? (
-		<input
-			type="text"
+		<textarea
+			name="editor--content"
+			id="editor--content"
+			cols="60"
+			rows="23"
 			value={props.currentNoteId ? displaySelected.text : ""}
 			onChange={(e) => props.updateNote(e.target.value)}
-		></input>
+		></textarea>
 	) : (
 		<div className="placeholder">
 			<p>Select your note</p>
@@ -44,20 +45,23 @@ export default function Notes(props) {
 	);
 
 	return (
-		<div className={props.darkMode ? "notes notes--dark" : "notes"}>
-			<div className="notes--sidebar">
-				<div className="notes--sidebar--top">
-					<div>Add Note</div>
-					<button
-						className="add--note--button"
-						onClick={props.addNewNote}
-					>
-						+
-					</button>
+		<div className={props.darkMode ? "body--dark" : "body--light"}>
+			<div className={props.darkMode ? "notes notes--dark" : "notes"}>
+				<div className="notes--sidebar">
+					<div className="notes--sidebar--top">
+						<div>Add Note</div>
+						<button
+							className="add--note--button"
+							onClick={props.addNewNote}
+						>
+							+
+						</button>
+					</div>
+					<div>{list}</div>
 				</div>
-				<div>{list}</div>
+				<div className="notes--editor">{inputShow}</div>
+				{/* {inputShow} */}
 			</div>
-			<div className="notes--editor">{inputShow}</div>
 		</div>
 	);
 }
