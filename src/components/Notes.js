@@ -35,6 +35,7 @@ export default function Notes(props) {
 			id="editor--content"
 			cols="60"
 			rows="23"
+			autoFocus
 			value={props.currentNoteId ? displaySelected.text : ""}
 			onChange={(e) => props.updateNote(e.target.value)}
 		></textarea>
@@ -49,18 +50,27 @@ export default function Notes(props) {
 			<div className={props.darkMode ? "notes notes--dark" : "notes"}>
 				<div className="notes--sidebar">
 					<div className="notes--sidebar--top">
-						<div>Add Note</div>
+						<h3>Add Note</h3>
 						<button
 							className="add--note--button"
 							onClick={props.addNewNote}
 						>
 							+
 						</button>
+						<button
+							className="reverse--button"
+							onClick={props.toggleSort}
+						>
+							{props.oldFirst ? (
+								<i class="fa-solid fa-arrow-down-wide-short"></i>
+							) : (
+								<i class="fa-solid fa-arrow-down-short-wide"></i>
+							)}
+						</button>
 					</div>
 					<div>{list}</div>
 				</div>
 				<div className="notes--editor">{inputShow}</div>
-				{/* {inputShow} */}
 			</div>
 		</div>
 	);

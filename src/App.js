@@ -13,6 +13,7 @@ function App() {
 	const [notesCount, setNotesCount] = useState(
 		JSON.parse(localStorage.getItem("notes")).length
 	);
+	const [oldFirst, setOldFirst] = useState(false);
 
 	function toggleDarkMode() {
 		setDarkMode((prevState) => !prevState);
@@ -46,25 +47,47 @@ function App() {
 			date: timeManagement(),
 		};
 
-		setNotes((prevState) => [newNote, ...prevState]);
+		if (oldFirst) {
+			setNotes((prevNotes) => {
+				const sortedArr = [];
+				for (const note of prevNotes) {
+					sortedArr.push(note);
+				}
+				sortedArr.push(newNote);
+				return sortedArr;
+			});
+		} else {
+			setNotes((prevState) => [newNote, ...prevState]);
+		}
+
 		setNotesCount((prevState) => prevState + 1);
+		setCurrentNoteId(newNote.id);
 	}
 
 	function updateNote(text) {
 		setNotes((prevNotes) => {
-			const newArr = [];
-			for (let i = 0; i < prevNotes.length; i++) {
-				if (prevNotes[i].id === currentNoteId) {
-					newArr.unshift({
-						...prevNotes[i],
+			let finalArr = [];
+			let filteredArr = prevNotes.filter(
+				(note) => note.id !== currentNoteId
+			);
+			let updatedItem = {};
+
+			for (const note of prevNotes) {
+				if (note.id === currentNoteId) {
+					updatedItem = {
+						...note,
 						text: text,
 						date: timeManagement(),
-					});
-				} else {
-					newArr.push(prevNotes[i]);
+					};
 				}
 			}
-			return newArr;
+			if (oldFirst) {
+				finalArr = [...filteredArr, updatedItem];
+			} else {
+				finalArr = [updatedItem, ...filteredArr];
+			}
+
+			return finalArr;
 		});
 	}
 
@@ -72,6 +95,13 @@ function App() {
 		event.stopPropagation();
 		setNotes((prevNotes) => prevNotes.filter((note) => note.id !== id));
 		setNotesCount((prevState) => prevState - 1);
+	}
+
+	function toggleSort() {
+		setOldFirst((prevState) => !prevState);
+
+		const reversedArr = notes.reverse();
+		setNotes(reversedArr);
 	}
 
 	return (
@@ -86,6 +116,8 @@ function App() {
 					setCurrentNote={setCurrentNote}
 					updateNote={updateNote}
 					deleteNote={deleteNote}
+					toggleSort={toggleSort}
+					oldFirst={oldFirst}
 				/>
 			) : (
 				<StartPage darkMode={darkMode} addNewNote={addNewNote} />

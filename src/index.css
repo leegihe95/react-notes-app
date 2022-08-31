@@ -16,14 +16,19 @@ code {
 /***** NAVBAR *****/
 /* NAVBAR DEFAULT MODE */
 .navbar {
-	height: 10vh;
-}
-.navbar > div {
-	width: fit-content;
-	margin-left: 85%;
+	height: 12vh;
 	display: flex;
-	/* justify-content: flex-end; */
+	justify-content: space-between;
 	align-items: center;
+}
+.nav--title {
+	margin: 0 5%;
+}
+.toggle--wrapper {
+	width: fit-content;
+	display: flex;
+	align-items: center;
+	margin: 0 5%;
 	cursor: pointer;
 }
 .toggle--slider {
@@ -70,7 +75,7 @@ nav.dark .toggle--slider--circle {
 /***** START PAGE *****/
 /* DEFAULT */
 .start {
-	height: 90vh;
+	height: 88vh;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -119,11 +124,11 @@ nav.dark .toggle--slider--circle {
 
 /****** NOTES ******/
 .body--light {
-	min-height: 90vh;
+	min-height: 88vh;
 	background-color: white;
 }
 .body--dark {
-	min-height: 90vh;
+	min-height: 88vh;
 	background-color: black;
 }
 .notes {
@@ -131,6 +136,11 @@ nav.dark .toggle--slider--circle {
 	display: flex;
 	justify-content: center;
 }
+.notes--dark {
+	background-color: black;
+	color: white;
+}
+/* LIST */
 .notes--sidebar {
 	width: 20%;
 	height: 100%;
@@ -138,6 +148,9 @@ nav.dark .toggle--slider--circle {
 	overflow: scroll;
 	border: 1px solid black;
 	border-radius: 5px;
+}
+.notes--dark .notes--sidebar {
+	border: 1px solid white;
 }
 .notes--sidebar--top {
 	display: flex;
@@ -147,11 +160,14 @@ nav.dark .toggle--slider--circle {
 	border-bottom: 1px solid grey;
 	box-shadow: 0 0 7px grey;
 }
-.notes--sidebar--top div {
-	margin-right: 10px;
+.notes--sidebar--top h3 {
 	font-size: 20px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 .add--note--button {
+	margin: 10px;
 	width: 35px;
 	height: 35px;
 	font-size: 25px;
@@ -161,7 +177,33 @@ nav.dark .toggle--slider--circle {
 	cursor: pointer;
 	box-shadow: 0 2px #999;
 }
+.notes--dark .add--note--button {
+	background-color: white;
+	color: black;
+}
 .add--note--button:active {
+	box-shadow: 0 1px #666;
+	transform: translateY(2px);
+}
+.reverse--button {
+	width: 35px;
+	height: 35px;
+	align-items: center;
+	text-align: center;
+	padding: 2px;
+	font-size: 20px;
+	background-color: white;
+	color: black;
+	border-radius: 5px;
+	cursor: pointer;
+	box-shadow: 0 2px #999;
+}
+.notes--dark .reverse--button {
+	background-color: black;
+	color: white;
+	border: white 1px solid;
+}
+.reverse--button:active {
 	box-shadow: 0 1px #666;
 	transform: translateY(2px);
 }
@@ -170,6 +212,9 @@ nav.dark .toggle--slider--circle {
 }
 .list--item:hover {
 	background-color: rgb(216, 215, 215);
+}
+.notes--dark .list--item:hover {
+	background-color: rgb(66, 66, 66);
 }
 .list--item:active {
 	transform: scale(0.99);
@@ -222,6 +267,7 @@ nav.dark .toggle--slider--circle {
 hr {
 	margin: 0;
 }
+/* EDITOR */
 .notes--editor {
 	width: 35%;
 	height: 100%;
@@ -238,23 +284,9 @@ hr {
 	outline: none;
 	border-radius: 5px;
 }
-.notes--dark {
-	background-color: black;
-	color: white;
-}
-.notes--dark .notes--sidebar {
-	border: 1px solid white;
-}
-.notes--dark .add--note--button {
-	background-color: white;
-	color: black;
-}
 .notes--dark #editor--content {
 	background-color: black;
 	color: white;
-}
-.notes--dark .list--item:hover {
-	background-color: rgb(66, 66, 66);
 }
 .placeholder {
 	width: 100%;
