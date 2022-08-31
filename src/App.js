@@ -15,17 +15,13 @@ function App() {
 	);
 	const [oldFirst, setOldFirst] = useState(false);
 
-	function toggleDarkMode() {
-		setDarkMode((prevState) => !prevState);
-	}
-
-	function setCurrentNote(id) {
-		setCurrentNoteId(id);
-	}
-
 	useEffect(() => {
 		localStorage.setItem("notes", JSON.stringify(notes));
 	}, [notes]);
+
+	function toggleDarkMode() {
+		setDarkMode((prevState) => !prevState);
+	}
 
 	function timeManagement() {
 		let d = new Date();
@@ -95,6 +91,10 @@ function App() {
 		event.stopPropagation();
 		setNotes((prevNotes) => prevNotes.filter((note) => note.id !== id));
 		setNotesCount((prevState) => prevState - 1);
+	}
+
+	function setCurrentNote(id) {
+		setCurrentNoteId(id);
 	}
 
 	function toggleSort() {

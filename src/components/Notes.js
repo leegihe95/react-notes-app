@@ -1,5 +1,21 @@
 export default function Notes(props) {
-	const list = props.notes.map((item) => (
+	const notesHeader = (
+		<div className="notes--sidebar--top">
+			<h3>Add Note</h3>
+			<button className="add--note--button" onClick={props.addNewNote}>
+				+
+			</button>
+			<button className="reverse--button" onClick={props.toggleSort}>
+				{props.oldFirst ? (
+					<i class="fa-solid fa-arrow-down-wide-short"></i>
+				) : (
+					<i class="fa-solid fa-arrow-down-short-wide"></i>
+				)}
+			</button>
+		</div>
+	);
+
+	const notesList = props.notes.map((item) => (
 		<div
 			className="list--item"
 			key={item.id}
@@ -25,18 +41,18 @@ export default function Notes(props) {
 		</div>
 	));
 
-	const displaySelected = props.notes.find(
+	const selectedNote = props.notes.find(
 		(note) => note.id === props.currentNoteId
 	);
 
-	const inputShow = displaySelected ? (
+	const editorBody = selectedNote ? (
 		<textarea
 			name="editor--content"
 			id="editor--content"
 			cols="60"
 			rows="23"
 			autoFocus
-			value={props.currentNoteId ? displaySelected.text : ""}
+			value={props.currentNoteId ? selectedNote.text : ""}
 			onChange={(e) => props.updateNote(e.target.value)}
 		></textarea>
 	) : (
@@ -49,28 +65,10 @@ export default function Notes(props) {
 		<div className={props.darkMode ? "body--dark" : "body--light"}>
 			<div className={props.darkMode ? "notes notes--dark" : "notes"}>
 				<div className="notes--sidebar">
-					<div className="notes--sidebar--top">
-						<h3>Add Note</h3>
-						<button
-							className="add--note--button"
-							onClick={props.addNewNote}
-						>
-							+
-						</button>
-						<button
-							className="reverse--button"
-							onClick={props.toggleSort}
-						>
-							{props.oldFirst ? (
-								<i class="fa-solid fa-arrow-down-wide-short"></i>
-							) : (
-								<i class="fa-solid fa-arrow-down-short-wide"></i>
-							)}
-						</button>
-					</div>
-					<div>{list}</div>
+					{notesHeader}
+					<div>{notesList}</div>
 				</div>
-				<div className="notes--editor">{inputShow}</div>
+				<div className="notes--editor">{editorBody}</div>
 			</div>
 		</div>
 	);
