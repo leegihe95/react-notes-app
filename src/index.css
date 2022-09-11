@@ -96,6 +96,7 @@ nav.dark .toggle--slider--circle {
 	border-radius: 5px;
 	cursor: pointer;
 	box-shadow: 0 2px #999;
+	padding: 0;
 }
 .start--main button:active {
 	background-color: black;
@@ -175,6 +176,7 @@ nav.dark .toggle--slider--circle {
 	border-radius: 5px;
 	cursor: pointer;
 	box-shadow: 0 2px #999;
+	padding: 0;
 }
 .notes--dark .add--note--button {
 	background-color: white;
@@ -332,7 +334,7 @@ hr {
 	.add--note--button {
 		width: 20px;
 		height: 20px;
-		font-size: 8px;
+		font-size: 15px;
 	}
 	.reverse--button {
 		width: 20px;
