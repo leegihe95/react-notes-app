@@ -11,7 +11,7 @@ function App() {
 		() => JSON.parse(localStorage.getItem("notes")) || []
 	);
 	const [notesCount, setNotesCount] = useState(
-		JSON.parse(localStorage.getItem("notes")).length
+		JSON.parse(localStorage.getItem("notes")).length || 0
 	);
 	const [oldFirst, setOldFirst] = useState(false);
 
