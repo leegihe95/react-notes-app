@@ -55,8 +55,8 @@ nav.dark > div {
 	color: white;
 }
 nav.dark .toggle--slider {
-	width: 30px;
-	height: 15px;
+	width: 7vw;
+	height: 2vh;
 	margin: 0 5px;
 	border: 1px solid white;
 	border-radius: 2rem;
@@ -66,8 +66,8 @@ nav.dark .toggle--slider {
 	justify-content: flex-end;
 }
 nav.dark .toggle--slider--circle {
-	width: 15px;
-	height: 15px;
+	width: 50%;
+	height: 100%;
 	border-radius: 50%;
 	background-color: black;
 }
@@ -310,4 +310,64 @@ hr {
 ::-webkit-scrollbar-thumb {
 	background: #3f3d3d;
 	border-radius: 5px;
+}
+
+@media only screen and (max-width: 820px) {
+	.nav--title h3,
+	.toggle--wrapper p {
+		font-size: 2vw;
+	}
+	.toggle--slider--circle {
+		width: 11px;
+		height: 11px;
+	}
+	.toggle--slider {
+		width: 20px;
+		height: 11px;
+	}
+	.notes {
+		height: 60vh;
+	}
+	.notes--sidebar {
+		width: 40%;
+	}
+	.notes--editor {
+		width: 50%;
+	}
+	.notes--sidebar--top h3 {
+		font-size: 2vw;
+	}
+	.add--note--button {
+		width: 20px;
+		height: 20px;
+		font-size: 8px;
+	}
+	.reverse--button {
+		width: 20px;
+		height: 20px;
+		font-size: 10px;
+	}
+	.date--text {
+		margin: 15px 5px;
+		font-size: 5px;
+		text-align: left;
+		white-space: normal;
+	}
+	.value--text {
+		font-size: 10px;
+	}
+	.delete--icon {
+		width: 15px;
+		height: 15px;
+		margin: 15px 5px;
+		font-size: 7px;
+		border-radius: 3px;
+		text-align: center;
+	}
+	#editor--content {
+		font-size: 15px;
+	}
+	.placeholder p {
+		font-size: 0.8em;
+	}
 }
